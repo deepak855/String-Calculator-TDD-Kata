@@ -1,8 +1,12 @@
 def add(numbers):
     if numbers == "":
-        return 0   
+        return 0    
    
-    number_list = numbers.split(',')  
+    numbers = numbers.replace('\\n', '\n') 
+    delimiter = ","
+    numbers = numbers.replace('\n', delimiter)    
+    
+    number_list = numbers.split(',')
     total = 0
     negatives = []    
     for num in number_list:
