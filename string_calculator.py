@@ -1,3 +1,4 @@
+import re
 def add(numbers):
     if numbers == "":
         return 0    
@@ -5,8 +6,8 @@ def add(numbers):
     numbers = numbers.replace('\\n', '\n') 
     delimiter = ","
     numbers = numbers.replace('\n', delimiter)    
-    
-    number_list = numbers.split(',')
+    replaced_string = re.sub(r'[^\w]', ',', numbers)       
+    number_list = [value for value in replaced_string.split(',') if value]    
     total = 0
     negatives = []    
     for num in number_list:
@@ -30,3 +31,5 @@ try:
     print("Output :", res)
 except ValueError as e:
     print("Error:", e)
+
+
